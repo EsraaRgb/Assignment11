@@ -1,0 +1,35 @@
+<!-- add Picture-->
+<!-- update -->
+<!-- delete -->
+
+<%- include('./shared/header')%>
+    <link rel="stylesheet" href="/profile.css">
+
+    <title>Document</title>
+    <link>
+    </head>
+
+    <body>
+        <section class="main p-5">
+            <div class="container my-5 p-5">
+                <img class="img-fluid my-2 profImg" src=" <%=user.profilePic%>">
+                <h1>Welcome Back : <%=user.userName%>
+                <a href="/update/<%=user._id%>" class="btn btn-info p-3">Update Profile</a>
+                <a href="/user/delete/<%=user._id%>" class="btn btn-danger p-3">Delete Account</a>
+                </h1>
+                <% if (errMessage?.length) { %>
+                    <div class="alert alert-danger text-center my-1">
+                        <%= errMessage %>
+                    </div>
+                    <% } %>
+                <div class="form  text-center my-5">
+                    <form class="w-75 m-auto" action="/user/profile/pic" method="POST" enctype="multipart/form-data">
+                        <input class="form-control" type="file" name="image">
+                        <div class="form-group my-2">
+                            <button class="btn btn-info w-100"> Upload Photo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <%- include('./shared/footer')%>

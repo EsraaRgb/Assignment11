@@ -1,0 +1,60 @@
+<%- include('./shared/header')%>
+
+    <title>Document</title>
+    </head>
+
+    <body>
+        <section class="main p-5">
+            <div class="container my-5 p-5">
+                <div class="w-100 text-center">
+                    <h1>Join Us Now</h1>
+                </div>
+                <% if (errMessage?.length) { %>
+                    <div class="alert alert-danger text-center my-1">
+                        <%= errMessage %>
+                    </div>
+                    <% } %>
+                        <div class="my-2">
+                            <form class="m-auto w-75 p-5" action="/user/update/<%=user._id%>" method="POST">
+                                <% if (validationErr?.includes('userName')) { %>
+                                    <div class="alert alert-danger my-1 text-center">
+                                       In-valid UserName
+                                    </div>
+         
+                                    <% } %>
+                                <div class="form-group my-1">
+                                    <input value="<%=user?.userName%>" class="form-control" name="userName" placeholder="UserName"
+                                        type="text" />
+                                </div>
+                                <% if (validationErr?.includes('email')) { %>
+                                    <div class="alert alert-danger my-1 text-center">
+                                       In-valid Email
+                                    </div>
+         
+                                    <% } %>
+                                <div class="form-group my-1">
+                                    <input value="<%=user?.email%>" class="form-control" name="email" placeholder="Email"
+                                        type="email" />
+                                </div>
+                                <% if (validationErr?.includes('phone')) { %>
+                                    <div class="alert alert-danger my-1 text-center">
+                                       In-valid phone
+                                    </div>
+         
+                                    <% } %>
+                                <div class="form-group my-1">
+                                    <input value="<%=user?.phone%>" class="form-control" name="phone" placeholder="Phone" type="text" />
+                                </div>
+
+                                <div class="form-group my-1">
+                                    <input value="<%=user?.age%>" class="form-control" name="age" placeholder="Age" type="text" />
+                                </div>
+                                <div class="form-group my-1">
+                                    <button class="btn btn-success p-3"> Update</button>
+                                    <a class="btn btn-info p-3" href="/login">Cancel</a>
+                                </div>
+                            </form>
+                        </div>
+            </div>
+        </section>
+        <%- include('./shared/footer')%>

@@ -25,7 +25,8 @@ const userSchema = new mongoose.Schema(
     },
     profilePic:String,
     phone:String,
-    Notes: {
+    age:Number,
+    notes: {
       type: [Types.ObjectId]
     },
   },

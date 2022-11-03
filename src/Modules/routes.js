@@ -19,8 +19,11 @@ router.get("/login", (req, res) => {
   res.render("signin", { errMessage, validationErr, oldInputs });
 });
 
-router.get("/users", (req, res) => {
-  res.render("users", { errMessage: "" });
+router.get("/users",async (req, res) => {
+  const users =await UserModel.find().select("-password -id").populate({
+    path:'notes'
+  })
+  res.render("users", { users});
 });
 router.get("/profile", auth(), async (req, res) => {
   const errMessage = req.flash("errMessage")[0];
@@ -35,7 +38,8 @@ router.get("/update/:id", auth(), async (req, res) => {
   res.render("updateUser", { user,errMessage,oldInputs,validationErr});
 });
 router.get("/notes", (req, res) => {
-  res.render("notes", { errMessage: "" });
+  
+  res.render("notes", {  });
 });
 router.get("/updateNote", (req, res) => {
   res.render("updateNote", { errMessage: "" });

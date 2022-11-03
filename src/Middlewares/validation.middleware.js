@@ -14,6 +14,7 @@ export const validate = (Schema, redirectPath) => {
       }
     });
     if (validationErrors.length) {
+      console.log("validatio");
       req.flash("oldInputs", req.body);
       req.flash("validationErr", validationErrors);
       res.redirect(redirectPath);

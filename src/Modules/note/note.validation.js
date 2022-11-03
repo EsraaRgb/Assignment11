@@ -1,6 +1,6 @@
 import joi from "joi";
 
-export const addpost = {
+export const addnote = {
   body: joi
     .object()
     .required()
